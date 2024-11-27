@@ -1,4 +1,7 @@
 import org.junit.Test;
+
+import java.nio.charset.UnsupportedCharsetException;
+
 import org.junit.Assert;
 
 public class DecisionTreeTest {
@@ -28,5 +31,22 @@ public class DecisionTreeTest {
         Assert.assertEquals(dRoot1.getRight().getLeft(), dTree5);
         Assert.assertEquals(dRoot1.getLeft().getLeft().getLeft(), null);
         Assert.assertEquals(dEmptyRoot, null);
+    }
+
+    @Test
+    public void test_followPath(){
+        Assert.assertEquals(dRoot1.followPath("YY"), dTree1);
+        Assert.assertEquals(dRoot1.followPath("YN"), dTree3);
+        Assert.assertEquals(dRoot1.followPath("NY"), dTree5);
+        Assert.assertEquals(dRoot1.followPath("NN"), dTree7);
+        Assert.assertEquals(dRoot1.followPath("Y"), dRoot2);
+        Assert.assertEquals(dRoot1.followPath("N"), dRoot3);
+    }
+
+    @Test
+    public void test_followPathExceptions(){ 
+        Assert.assertThrows("exception on command passed in ", UnsupportedCharsetException.class, () -> {dRoot1.followPath("YYN");});
+        Assert.assertThrows("exception on command passed in ", UnsupportedCharsetException.class, () -> {dRoot1.followPath("NNY");});
+        Assert.assertThrows("exception on command passed in ", UnsupportedCharsetException.class, () -> {dRoot1.followPath("yN");});
     }
 }

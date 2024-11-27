@@ -12,3 +12,8 @@ Any references used besides JavaDoc and course materials:
 ## Assignment Reflection
 
 Please reflect on your experience with this assignment. What was most challenging? What was most interesting?
+
+Used:
+How TO traverse through a string 
+What is the use of the extra cheeckning when we can just always pass in a binary tree or in worst case, convert binary trees passed in to decision trees? 
+What does () do?

@@ -61,7 +61,7 @@ We suggest designing `DecisionTree` to implement a reusable decision tree-- excl
 
 The first step is to write the `DecisionTree` class, where you build a subclass of the `BinaryTree` class. Most of the work on this class will be writing revised constructors, accessors, and manipulators as discussed in class.  Look through the `BinaryTree` class and identify the methods that you will need to override.
 
-You should also write and test a function called `followPath` that accepts a `String` like *YNNYNYY* that it uses to trace a path through the tree from the root.  A *Y* means to follow the left child and a *N* means to follow the right child.  The method should return the node that is reached after all the characters in the input string have been followed.  Note that you can write this function either iteratively or recursively.
+You should also write and test a function called `followPath` that accepts a `String` like *YNNYNYY* that it uses to trace a path through the tree from the root.  A *Y* means to follow the left child and a *N* means to follow the right child.  The method should return the node that is reached after all the characters in the input string have been followed.  Note that you can write this function either iteratively or recursively.  
 
 Before moving on to the next phase, it is a good idea to spend some time becoming accustomed to working with a tree.  Write some test code that builds a sample decision tree with at least six nodes.  (You can use the example below for inspiration.)  Practice accessing the data at individual nodes via the root.  For example, what node is accessed by the expression `tree.getLeft().getRight().getData()`?  Move on to the next phase only when you feel reasonably comfortable with this one.
 

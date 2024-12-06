@@ -1,0 +1,7 @@
+ Is it a mammal?
+Y Does it have hooves?
+N Is it a reptile?
+YY Cow
+YN Rabbit
+NY Crocodile
+NN mosquito

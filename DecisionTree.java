@@ -1,4 +1,12 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.lang.reflect.Array;
 import java.nio.charset.UnsupportedCharsetException;
+import java.util.ArrayDeque;
+import java.util.HashMap;
 
 /**
  *  Implements decision trees.
@@ -159,19 +167,85 @@ public class DecisionTree extends BinaryTree<String>{
         return current;
     }
 
-    public static void main(String[] args) {
-        DecisionTree dTree = new DecisionTree("A");
-        DecisionTree dTree2 = new DecisionTree("B");
-        DecisionTree dTree3 = new DecisionTree("C");
-        System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
-        dTree.setLeft(dTree2);
-        System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
-        dTree.setRight(dTree3);
-        System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
+    public static void writeIn(DecisionTree root, String filename){
+        PrintWriter out = null;
+        try{
+            out = new PrintWriter(new FileWriter(filename));
+            ArrayDeque<DecisionTree> queueTree = new ArrayDeque<>();
+            ArrayDeque<String> queuePaths = new ArrayDeque<>();
+            String pathToFollow = "";
+    
+            /** add root to the queue */
+            DecisionTree current = root; 
+            queueTree.addLast(current);
+            queuePaths.addLast("");
+    
+            /** loop through queue while both are not empty */
+            while (queueTree.size() != 0){
+                current = queueTree.peekFirst();
+                //adds left child to queue
+                if (current.getLeft() != null){
+                    pathToFollow = queuePaths.peekFirst() + "Y";
+                    queueTree.addLast(current.getLeft());
+                    queuePaths.addLast(pathToFollow);
+                }
+                if (current.getRight() != null){
+                    pathToFollow = queuePaths.peekFirst() + "N";
+                    queueTree.addLast(current.getRight());
+                    queuePaths.addLast(pathToFollow);
+                }
+                out.println(queuePaths.removeFirst() + " " + queueTree.removeFirst().getData());
+            }
+            out.close();
+        }catch(IOException e){
+            System.err.println("File not found!");
+            System.exit(-1);
+        }
+        //What next?
+    }
 
-        System.out.println("entire tree is  " + dTree);
+    // public static void WriteOut(ArrayDeque<DecisionTree> treeQueue, ArrayDeque<String> pathQueue){
+    //     if (pathQueue.size() == 0 || treeQueue.size() == 0){
+    //         throw new Exception("One of both queues is empty"); 
+    //     }
+    //     //pop out node and corresponding path from both queues
+    //     DecisionTree node;
+    //     String path = "";
+    //     if (pathQueue != null){
+    //         node = treeQueue.pop();
+    //         path = pathQueue.pop();
+    //     } 
+        
+    //     if (path.length() == 1){
+            
+    //     }
+    // }
 
-       System.out.println(dTree.followPath("Y"));
+
+    public static void main(String[] args) throws IOException {
+        // DecisionTree dTree = new DecisionTree("A");
+        // DecisionTree dTree2 = new DecisionTree("B");
+        // DecisionTree dTree3 = new DecisionTree("C");
+        // //System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
+        // dTree.setLeft(dTree2);
+        // //System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
+        // dTree.setRight(dTree3);
+        // //System.out.println("left is " + dTree.getLeft() + " and right is " + dTree.getRight());
+
+        // //System.out.println("entire tree is  " + dTree);
+
+        // //System.out.println(dTree.followPath("Y"));
+        // writeIn(dTree, "test");
+        PrintWriter out = new PrintWriter(new FileWriter("test.txt"));
+        // try{
+        //     out = new PrintWriter(new FileWriter("test.txt"));
+        // }catch(IOException e){
+        //     System.err.println("File not found!");
+        //     System.exit(-1);
+        // }
+        out.println("Hello");
+        out.close();
+        
     }
 
 }

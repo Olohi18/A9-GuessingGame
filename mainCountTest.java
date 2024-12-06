@@ -17,6 +17,6 @@ public class mainCountTest {
 
     public static void main(String[] args) {
         mainCountTest test = new mainCountTest();
-        System.out.println(test.steps(4));
+        System.out.println(test.steps(50));
     }
 }

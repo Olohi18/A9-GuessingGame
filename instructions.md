@@ -61,16 +61,16 @@ We suggest designing `DecisionTree` to implement a reusable decision tree-- excl
 
 The first step is to write the `DecisionTree` class, where you build a subclass of the `BinaryTree` class. Most of the work on this class will be writing revised constructors, accessors, and manipulators as discussed in class.  Look through the `BinaryTree` class and identify the methods that you will need to override.
 
-You should also write and test a function called `followPath` that accepts a `String` like *YNNYNYY* that it uses to trace a path through the tree from the root.  A *Y* means to follow the left child and a *N* means to follow the right child.  The method should return the node that is reached after all the characters in the input string have been followed.  Note that you can write this function either iteratively or recursively.  
+You should also write and test a function called `followPath` that accepts a `String` like *YNNYNYY* that it uses to trace a path through the tree from the root.  A *Y* means to follow the left child and a *N* means to follow the right child.  The method should return the node that is reached after all the characters in the input string have been followed.  Note that you can write this function either iteratively or recursively.    
 
 Before moving on to the next phase, it is a good idea to spend some time becoming accustomed to working with a tree.  Write some test code that builds a sample decision tree with at least six nodes.  (You can use the example below for inspiration.)  Practice accessing the data at individual nodes via the root.  For example, what node is accessed by the expression `tree.getLeft().getRight().getData()`?  Move on to the next phase only when you feel reasonably comfortable with this one.
 
-### Phase 2:  `AnimalGuess`
+### Phase 2:  `AnimalGuess` 
 
 The next step is to write the code that runs the guessing game: 
 - The basic structure in `main` will be a loop, where each time through the loop represents a single guessing round. (Write the code to play just a single round of the game at first.  Later on you can add an outer loop in case the player wants to play again after the first game.)
 - Beginning at the root, you need to keep track of the position in the tree as the player's responses dictate whether to move left or right. How can you do this in a binary tree?
-
+ 
 You may also wish to define some short utility methods in `AnimalGuess`. For example: 
 - One might read a line of input with a `try`/`catch` block to handle possible exceptions or invalid responses. 
 - Another might take a prompt and elicit a yes or no answer from the user, returning a boolean. This would have several applications in the program.  You should probably accept several forms of responses -- *yes*, *Yes*, *y* and *Y* for a positive answer, and the equivalent for a negative.  
@@ -100,7 +100,7 @@ The format of the file is one node per line, in breadth-first order for full cre
     YNYN Cat
 
 (Note that the space at the front of the first line is not a typo.  It indicates that this is the data for the node with an empty path string -- the root!)
-
+ 
 ### Output
 
 Start by writing the method to write the tree to a file.  Put it in class `DecisionTree`.  You can test this using the hard-coded tree you created for phase 1.  It should print the tree nodes line by line using breadth-first traversal.  In addition to the queue of nodes to be visited, you will also need a parallel queue holding their paths.  

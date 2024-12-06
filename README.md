@@ -17,3 +17,9 @@ Used:
 How TO traverse through a string 
 What is the use of the extra cheeckning when we can just always pass in a binary tree or in worst case, convert binary trees passed in to decision trees? 
 What does () do?
+
+Question
+Can a node have just one child. What of root node? must all nodes have up to 2 children
+
+AI?
+IOException during PrintWriting in
